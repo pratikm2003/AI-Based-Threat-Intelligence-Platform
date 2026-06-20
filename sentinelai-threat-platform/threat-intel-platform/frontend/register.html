@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create account · SentinelAI</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth-screen">
+
+  <div class="auth-form-side">
+    <div class="auth-form-card">
+      <div class="auth-brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.3-7.5 9.7-4.3-1.4-7.5-5.1-7.5-9.7v-6l7.5-3z"/>
+            <circle cx="12" cy="11.2" r="1.4" fill="white" stroke="none"/>
+          </svg>
+        </div>
+        <div class="brand-name">Sentinel<span>AI</span></div>
+      </div>
+
+      <h1>Create your account</h1>
+      <p class="auth-subtitle">New accounts get analyst-level access by default.</p>
+
+      <div id="authAlert" class="alert alert-error hidden"></div>
+      <div id="authSuccess" class="alert alert-success hidden"></div>
+
+      <form id="registerForm" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="3-32 characters: letters, numbers, . or _" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="password-field-wrap">
+              <input type="password" id="password" name="password" placeholder="6+ characters" autocomplete="new-password" required>
+              <button type="button" class="password-toggle" data-password-toggle="#password" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="confirmPassword">Confirm</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" autocomplete="new-password" required>
+          </div>
+        </div>
+
+        <button type="submit" id="registerSubmit" class="btn btn-primary btn-block">Create account</button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="index.html">Sign in</a></p>
+    </div>
+  </div>
+
+  <div class="auth-visual-side">
+    <svg class="network-svg" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice">
+      <line class="net-link" x1="80" y1="120" x2="220" y2="180"/>
+      <line class="net-link" x1="220" y1="180" x2="380" y2="100"/>
+      <line class="net-link" x1="220" y1="180" x2="300" y2="320"/>
+      <line class="net-link" x1="380" y1="100" x2="500" y2="220"/>
+      <line class="net-link" x1="300" y1="320" x2="500" y2="220"/>
+      <line class="net-link" x1="300" y1="320" x2="180" y2="430"/>
+      <line class="net-link" x1="300" y1="320" x2="420" y2="450"/>
+      <line class="net-link" x1="180" y1="430" x2="100" y2="560"/>
+      <line class="net-link" x1="420" y1="450" x2="480" y2="580"/>
+      <line class="net-link" x1="180" y1="430" x2="420" y2="450"/>
+      <line class="net-link" x1="500" y1="220" x2="540" y2="380"/>
+      <line class="net-link" x1="540" y1="380" x2="420" y2="450"/>
+      <line class="net-link" x1="80" y1="120" x2="120" y2="280"/>
+      <line class="net-link" x1="120" y1="280" x2="220" y2="180"/>
+      <line class="net-link" x1="120" y1="280" x2="180" y2="430"/>
+
+      <circle class="net-node" cx="80" cy="120" r="3.4"/>
+      <circle class="net-node pulse" cx="220" cy="180" r="3.4"/>
+      <circle class="net-node" cx="380" cy="100" r="3.4"/>
+      <circle class="net-node-core" cx="300" cy="320" r="5.5"/>
+      <circle class="net-node" cx="500" cy="220" r="3.4"/>
+      <circle class="net-node pulse" cx="180" cy="430" r="3.4"/>
+      <circle class="net-node" cx="420" cy="450" r="3.4"/>
+      <circle class="net-node" cx="100" cy="560" r="3.4"/>
+      <circle class="net-node pulse" cx="480" cy="580" r="3.4"/>
+      <circle class="net-node" cx="540" cy="380" r="3.4"/>
+      <circle class="net-node" cx="120" cy="280" r="3.4"/>
+
+      <line class="scan-line" x1="0" y1="0" x2="600" y2="0"/>
+    </svg>
+
+    <div class="visual-copy">
+      <div class="eyebrow">Threat Intelligence</div>
+      <h2>One workspace for every IOC your team finds.</h2>
+      <p>Track indicators, run AI-assisted triage on suspicious URLs and incident reports, and export clean reports for stakeholders — all from one dashboard.</p>
+    </div>
+
+    <div class="visual-stats">
+      <div class="vstat"><strong>2,400+</strong><span>URL training samples</span></div>
+      <div class="vstat"><strong>1,180+</strong><span>incident text samples</span></div>
+      <div class="vstat"><strong>2</strong><span>trained ML models</span></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threats · SentinelAI</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.3-7.5 9.7-4.3-1.4-7.5-5.1-7.5-9.7v-6l7.5-3z"/>
+          <circle cx="12" cy="11.2" r="1.4" fill="white" stroke="none"/>
+        </svg>
+      </div>
+      <div class="brand-name">Sentinel<span>AI</span></div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        Dashboard
+      </a>
+      <a href="threats.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+        Threats
+      </a>
+      <a href="analyzer.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/><line x1="15" y1="15" x2="20" y2="20"/></svg>
+        AI Analyzer
+      </a>
+      <a href="reports.html" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="20" x2="5" y2="11"/><line x1="12" y1="20" x2="12" y2="6"/><line x1="19" y1="20" x2="19" y2="14"/></svg>
+        Reports
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar" data-user-avatar>··</div>
+        <div class="user-meta">
+          <div class="user-name" data-user-name>Loading…</div>
+          <div class="user-role" data-user-role>—</div>
+        </div>
+        <button class="logout-btn" data-logout aria-label="Log out" title="Log out">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="flex items-center gap-md">
+        <button class="sidebar-toggle" data-sidebar-toggle aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <div class="topbar-title">Threats</div>
+          <div class="topbar-subtitle">All tracked indicators of compromise</div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-sm" id="openAddModalBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add threat
+      </button>
+    </header>
+
+    <main class="page-content">
+
+      <div class="card">
+        <div class="filter-bar">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" placeholder="Search IOC value…">
+          </div>
+          <select id="severityFilter">
+            <option value="">All severities</option>
+            <option value="critical">Critical</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+          <select id="typeFilter">
+            <option value="">All types</option>
+            <option value="malware">Malware</option>
+            <option value="phishing">Phishing</option>
+            <option value="ransomware">Ransomware</option>
+            <option value="ddos">DDoS</option>
+            <option value="sql_injection">SQL Injection</option>
+            <option value="botnet">Botnet</option>
+            <option value="insider_threat">Insider Threat</option>
+            <option value="network_intrusion">Network Intrusion</option>
+            <option value="other">Other</option>
+          </select>
+          <select id="statusFilter">
+            <option value="">All statuses</option>
+            <option value="active">Active</option>
+            <option value="investigating">Investigating</option>
+            <option value="resolved">Resolved</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Indicator</th>
+                <th>Type</th>
+                <th>Severity</th>
+                <th>Confidence</th>
+                <th>Status</th>
+                <th>Source</th>
+                <th>Detected</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="threatsBody">
+              <tr><td colspan="8"><div class="loading-row"><div class="spinner"></div> Loading…</div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <span id="paginationInfo">—</span>
+          <div class="pagination-buttons" id="paginationButtons"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Add Threat Modal -->
+<div class="modal-overlay" id="addModalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add a new threat</h3>
+      <button class="modal-close" id="closeAddModalBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div id="addThreatAlert" class="alert alert-error hidden"></div>
+      <form id="addThreatForm" novalidate>
+        <div class="field">
+          <label for="ioc_value">IOC value</label>
+          <input type="text" id="ioc_value" placeholder="e.g. evil-domain.tk or 192.0.2.10" required>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="ioc_type">IOC type</label>
+            <select id="ioc_type">
+              <option value="domain">Domain</option>
+              <option value="url">URL</option>
+              <option value="ip">IP address</option>
+              <option value="hash">File hash</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="threat_type">Threat type</label>
+            <select id="threat_type">
+              <option value="phishing">Phishing</option>
+              <option value="malware">Malware</option>
+              <option value="ransomware">Ransomware</option>
+              <option value="ddos">DDoS</option>
+              <option value="sql_injection">SQL Injection</option>
+              <option value="botnet">Botnet</option>
+              <option value="insider_threat">Insider Threat</option>
+              <option value="network_intrusion">Network Intrusion</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="severity">Severity</label>
+            <select id="severity">
+              <option value="critical">Critical</option>
+              <option value="high" selected>High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="confidence_score">Confidence (0-100)</label>
+            <input type="number" id="confidence_score" min="0" max="100" value="75">
+          </div>
+        </div>
+        <div class="field">
+          <label for="source">Source</label>
+          <input type="text" id="source" placeholder="e.g. Internal SOC, VirusTotal">
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" rows="3" placeholder="Optional notes about this indicator"></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="cancelAddModalBtn">Cancel</button>
+      <button class="btn btn-primary" id="submitAddThreatBtn" form="addThreatForm" type="submit">Add threat</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+
+<script src="js/api.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/threats.js"></script>
+</body>
+</html>
